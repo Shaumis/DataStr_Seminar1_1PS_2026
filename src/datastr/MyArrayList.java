@@ -165,4 +165,16 @@ public class MyArrayList {
 		int indexForNextElement = indexOfSearchElement + 1;
 		return list[indexForNextElement];
 	}
+
+	public void sort() {
+		for (int i = 0; i < howManyElements; i++) {
+			for (int j = 0; j < howManyElements; j++) {
+				if (list[i] > list[j]) {
+					char temp = list[i];
+					list[i] = list[j];
+					list[j] = temp;
+				}
+			}
+		}
+	}
 }
