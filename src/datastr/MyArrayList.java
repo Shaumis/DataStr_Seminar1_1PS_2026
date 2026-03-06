@@ -124,7 +124,7 @@ public void print()throws Exception {
 		throw(new Exception("Saraksts ir tukšs"));
 	}
 	for(int i = 0; i < howManyElements;i++) {
-		System.out.println(list[i] + " ");
+		System.out.print(list[i] + " ");
 	}
 	System.out.println();
 }
