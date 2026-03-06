@@ -15,6 +15,9 @@ public class MainService {
 			symbols.print();
 			symbols.remove(2);
 			symbols.print();
+			
+			System.out.println(symbols.get(1));
+			
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
