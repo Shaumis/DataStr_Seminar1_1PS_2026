@@ -165,15 +165,52 @@ public class MyArrayList {
 		return list[indexForNextElement];
 	}
 
-	public void sort() {
-		for (int i = 0; i < howManyElements; i++) {
-			for (int j = 0; j < howManyElements; j++) {
-				if (list[i] > list[j]) {
-					char temp = list[i];
-					list[i] = list[j];
-					list[j] = temp;
-				}
+	public void sort(int a[], int leftSide, int rightSide) {
+		if (leftSide < rightSide) { // sarakstā vairāk par 1 elementu
+			int mid = leftSide + (rightSide - leftSide) / 2; // tiek atrasts viduspunkts
+			sort(a, leftSide, mid); // kreisās puses kārtošana
+			sort(a, mid + 1, rightSide); // labās puses kārtošana
+			merge(a, leftSide, mid, rightSide); // abu pušu saplūšana
+		}
+	}
+
+	private void merge(int a[], int leftSide, int mid, int rightSide) {
+
+		// saraksta abas puses
+
+		int right[] = new int[rightSide - mid];
+		int left[] = new int[mid - leftSide + 1];
+
+		// abu pušu sadalīšana individālos elementos
+
+		for (int i = mid + 1; i <= rightSide; i++) {
+			right[i - mid - 1] = a[i];
+		}
+		
+		for (int i = leftSide; i <= mid; i++) {
+			left[i - leftSide] = a[i];
+		}
+
+
+		// saplūšana un kārtošana
+
+		int i = 0, j = 0, k = leftSide;
+
+		while (i < left.length && j < right.length) {
+			if (left[i] <= right[j]) {
+				a[k++] = left[i++];
+			} else {
+				a[k++] = right[j++];
 			}
+		}
+
+		// pārpalikušie elementi
+		
+		while (j < right.length) {
+			a[k++] = right[j++];
+		}
+		while (i < left.length) {
+			a[k++] = left[i++];
 		}
 	}
 

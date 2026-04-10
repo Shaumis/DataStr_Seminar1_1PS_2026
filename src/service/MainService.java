@@ -11,19 +11,22 @@ public class MainService {
 		symbols.add('c');
 		try {
 			symbols.print();
-			symbols.add('Z',1);
+			symbols.add('Z', 1);
 			symbols.print();
 			symbols.remove(2);
 			symbols.print();
 			System.out.println(symbols.get(1));
 			System.out.println(symbols.search('Z'));
 			System.out.println(symbols.getNextOne('a'));
-			symbols.sort();
-			symbols.print();
-			symbols.begone();
-			symbols.add('W');
-			symbols.print();
 			
+			int array[] = { 0, 20, 3, 9, 28,};
+			int n = array.length;
+			symbols.sort(array, 0, n - 1);
+			for (int num : array) {
+				System.out.print(num + " ");
+			}
+
+
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
